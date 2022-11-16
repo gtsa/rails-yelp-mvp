@@ -1,0 +1,21 @@
+<%= link_to "Back to all restaurants", restaurants_path, class: "btn btn-primary" %>
+<div class = "container mt-5">
+  <h1><%= @restaurant.name %></h1>
+  <p><b><%= "#{@restaurant.category.capitalize} restaurant" %></b></p>
+  <p><%= "#{@restaurant.address} / tel: #{@restaurant.phone_number}" %></p>
+  <div class="container mt-3 border-top pt-3">
+  <p><strong>Reviews</strong></p>
+  <ul class="list-group">
+    <% @restaurant.reviews.each do |review| %>
+      <li class="list-group-item">
+        <ul class="list-group">
+          <li class="list-group-item"><%="#{'⭐'*review.rating}"%></li>
+          <li class="list-group-item"><%= review.content %></li>
+        </ul>
+      </li>
+    <% end %>
+  </ul>
+  <p><%= link_to "Add your comment", new_restaurant_review_path(@restaurant) %></p>
+  <br>
+  </div>
+</div>
